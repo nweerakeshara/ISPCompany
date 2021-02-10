@@ -31,7 +31,7 @@ class  LoginEmp  extends  Component{
             msg :null
         });
 
-        this.props.history.push('/addDoc');
+        this.props.history.push('/addPackage');
     }
 
     componentDidUpdate =(prevProps) => {

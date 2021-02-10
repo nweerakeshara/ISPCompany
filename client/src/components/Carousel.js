@@ -7,6 +7,7 @@ const items = [
       "/images/slide1.jpg",
     altText: "Slide 1",
     key: "1",
+
   },
   {
     src:
@@ -22,9 +23,7 @@ const items = [
     key: "3",
   },
   {
-    src:
-
-        "/images/slide4.JPG",
+    src: "/images/slide4.JPG",
     altText: "Slide 4",
 
     key: "4",
@@ -38,7 +37,7 @@ const items = [
 ];
 
 const Carousel = () => (
-  <div style={{ margin: "20px" }}>
+  <div style={{ margin: "20px" }} className='mt-0'>
     <UncontrolledCarousel controls={false} items={items} />
   </div>
 );

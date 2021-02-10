@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-
+import Package from "./package.component";
 import "react-notifications/lib/notifications.css";
 import Carousel from "../components/Carousel";
 
@@ -42,21 +42,19 @@ class PackageList extends Component {
   };
 
   render() {
-    const { user } = this.props.emp;
     const { pager, pageOfItems } = this.state;
     return (
       <div>
-        <div className="row mx-md-n5">
+        <Carousel className='mt-0 pt-0' />
 
+        <div className="row mx-md-n5">
           <div style={{width:"70px", display:"inline-block"}} />
-          
           <div>
               <Link to={'/search'}> <button className="btn btn-primary">Advanced Search</button></Link>
           </div>
-
         </div>
 
-        <Carousel/>
+
 
         <div className="card text-center m-3">
           <h3 className="card-header font-weight-bold">Internet Package List</h3>
@@ -65,60 +63,9 @@ class PackageList extends Component {
 
           <div className="card-body ">
             {pageOfItems.map((item) => (
-              <div key={item._id}>
-                <div className="container rounded-0 border border-info ">
-                  <div className="container ">
-                    <div className="row">
-                      <div className="col-sm">
-                        <br />
-                        <img
-                          height="80%"
-                          width="100%"
-                          src={`/uploads/${item.imageData}`}
-                        />
-                        <br />
-                      </div>
-                      <div className="col-sm">
-                        <br />
-                        <br />
-                        <br />
-                        <h4 className="font-weight-bold text-center text-danger ">
-                          {item.packageName}
-                        </h4>
-                        <h6 className="font-weight-bold text-center">
-                          Type : {item.packageType}
-                        </h6>
-                        <h5 className="font-weight-bold text-center text-info">
-                          Monthly Rental : Rs {item.monthlyCharge}.00
-                        </h5>
-                        <br />
-                        <br />
-                      </div>
-
-                      <div className="col-sm">
-                        <br />
-                        <br />
-                        <br />
-                        <h6 className="font-weight-bold text-center">
-                          Down Payment : Rs {item.downPayment}.00
-                        </h6>
-                        <h6 className="font-weight-bold text-center text-primary">
-                          Download Data Limit : {item.downloadLimit} GB
-                        </h6>
-                        <h6 className="font-weight-bold text-center text-success">
-                          Upload Data Limit : {item.uploadLimit} GB
-                        </h6>
-                        <p className="font-weight-bold text-center text-warning">
-                          Charge For Extra GB : Rs {item.extraGBFee}.00
-                        </p>
-                        <br />
-                        <br />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <br />
-              </div>
+              <>
+                <Package item={item}/>
+              </>
             ))}
           </div>
           <div className="card-footer pb-0 pt-3">

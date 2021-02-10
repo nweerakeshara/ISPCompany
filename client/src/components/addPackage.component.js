@@ -17,6 +17,8 @@ class AddPackage extends Component{
         packageName: "",
         packageType: "",
         monthlyCharge: "",
+        downloadSpeed: "",
+        uploadSpeed: "",
         downloadLimit: "",
         uploadLimit: "",
         extraGBFee: "",
@@ -63,6 +65,18 @@ class AddPackage extends Component{
     onChangeMonthlyCharge  =(e) =>{
         this.setState({
             monthlyCharge: e.target.value
+        });
+    }
+
+    onChangeDownloadSpeed =(e) =>{
+        this.setState({
+            downloadSpeed: e.target.value
+        });
+    }
+
+    onChangeUploadSpeed =(e) =>{
+        this.setState({
+            uploadSpeed: e.target.value
         });
     }
 
@@ -128,6 +142,8 @@ class AddPackage extends Component{
         imageFormObj.append("packageName", this.state.packageName);
         imageFormObj.append("packageType", this.state.packageType);
         imageFormObj.append("monthlyCharge", this.state.monthlyCharge);
+        imageFormObj.append("downloadSpeed", this.state.downloadSpeed);
+        imageFormObj.append("uploadSpeed", this.state.uploadSpeed);
         imageFormObj.append("downloadLimit", this.state.downloadLimit);
         imageFormObj.append("uploadLimit", this.state.uploadLimit);
         imageFormObj.append("extraGBFee", this.state.extraGBFee);
@@ -152,6 +168,8 @@ class AddPackage extends Component{
             packageName: "",
             packageType: "",
             monthlyCharge: "",
+            downloadSpeed: "",
+            uploadSpeed: "",
             downloadLimit: "",
             uploadLimit: "",
             extraGBFee: "",
@@ -162,9 +180,6 @@ class AddPackage extends Component{
             msg: null
         })
 
-
-
-        //this.props.history.push('/guest');
     }
 
     render() {
@@ -177,7 +192,7 @@ class AddPackage extends Component{
                 {!isAuthenticated ?
 
                     <div className="text-center">
-                    <Alert className="text-center" color="danger"><h3><p className="text-danger text-center">Please Login To add Doctor Details</p></h3></Alert>
+                    <Alert className="text-center" color="danger"><h3><p className="text-danger text-center">Please Login To add Package Details</p></h3></Alert>
                     <br/>      <br/>          <br/>              <br/>            <br/>             <br/>                <br/>          <br/> <br/>
 
 
@@ -214,17 +229,15 @@ class AddPackage extends Component{
 
                         <div className="form-group">
                             <label>Package Type :</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                value={this.state.packageType}
-                                onChange={this.onChangePackageType}
-
-                            />
+                            <div onChange={this.onChangePackageType}>
+                                <input type="radio" value="4G" name="type" /> 4G <br/>
+                                <input type="radio" value="Fiber" name="type" /> Fiber <br/>
+                                <input type="radio" value="Broadband" name="type" /> Broadband
+                            </div>
                         </div>
 
                         <div className="form-group">
-                            <label>Monthly Rental :</label>
+                            <label>Monthly Rental (Rs) :</label>
                             <input
                                 type="number"
                                 className="form-control"
@@ -234,9 +247,31 @@ class AddPackage extends Component{
                             />
                         </div>
 
+                        <div className="form-group">
+                            <label>Download Speed (Mbps) :</label>
+                            <input
+                                type="number"
+                                className="form-control"
+                                value={this.state.downloadSpeed}
+                                onChange={this.onChangeDownloadSpeed}
+
+                            />
+                        </div>
 
                         <div className="form-group">
-                            <label>Download Limit :</label>
+                            <label>Upload Speed (Mbps) :</label>
+                            <input
+                                type="number"
+                                className="form-control"
+                                value={this.state.uploadSpeed}
+                                onChange={this.onChangeUploadSpeed}
+
+                            />
+                        </div>
+
+
+                        <div className="form-group">
+                            <label>Download Limit (GB) :</label>
                             <input
                                 type="number"
                                 className="form-control"
@@ -247,7 +282,7 @@ class AddPackage extends Component{
                         </div>
 
                         <div className="form-group">
-                            <label>Upload Limit :</label>
+                            <label>Upload Limit (GB) :</label>
                             <input
                                 type="number"
                                 className="form-control"
@@ -260,7 +295,7 @@ class AddPackage extends Component{
 
 
                         <div className="form-group">
-                            <label>Charge for an Extra GB :</label>
+                            <label>Charge for an Extra GB (Rs) :</label>
                             <input
                                 type="number"
                                 className="form-control"
@@ -270,7 +305,7 @@ class AddPackage extends Component{
                         </div>
 
                         <div className="form-group">
-                            <label>Down Payment :</label>
+                            <label>Down Payment (Rs) :</label>
                             <input
                                 type="number"
                                 className="form-control"

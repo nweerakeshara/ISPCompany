@@ -66,8 +66,8 @@ router.get('/get/all/paginate', (req,res) => {
 router.get('/get/all/paginate/search', (req,res) => {
     Package.find({
         "$or": [
-            { docName: { '$regex': req.query.sitem, '$options': 'i' } },
-            { specialization: { '$regex': req.query.sitem, '$options': 'i' } }  /*to search on doc name and specialization */
+            { packageName: { '$regex': req.query.sitem, '$options': 'i' } },
+            { packageType: { '$regex': req.query.sitem, '$options': 'i' } }  /*to search on doc name and specialization */
         ]
 
           }).then(items => {
@@ -96,7 +96,7 @@ router.route("/add").post(
     upload.single("imageData"),
     (req, res, next) => {
         console.log(req.body);
-        const newPac = new Package({     /*doc cons called*/
+        const newPac = new Package({     /*pac cons called*/
             imageName: req.body.imageName,
             // imageData: req.file.path,
             imageData: req.file.path.substr(22),
@@ -104,6 +104,8 @@ router.route("/add").post(
             packageName: req.body.packageName,
             packageType: req.body.packageType,
             monthlyCharge: req.body.monthlyCharge,
+            downloadSpeed: req.body.downloadSpeed,
+            uploadSpeed: req.body.uploadSpeed,
             downloadLimit: req.body.downloadLimit,
             uploadLimit: req.body.uploadLimit,
             extraGBFee: req.body.extraGBFee,

@@ -19,6 +19,12 @@ const packageSchema = mongoose.Schema({
     monthlyCharge: {
         type : Number
     },
+    downloadSpeed: {
+        type : Number
+    },
+    uploadSpeed: {
+        type : Number
+    },
     downloadLimit: {
         type : Number
     },

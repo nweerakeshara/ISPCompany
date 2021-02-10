@@ -29,7 +29,7 @@ class NavbarComponent extends Component {
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item">
                         <NavItem>
-                            <Link to={'/addDoc'}  className="nav-link"> <button className="btn btn-warning" >
+                            <Link to={'/addPackage'}  className="nav-link"> <button className="btn btn-warning" >
 
                                   <strong> {user ? `Hi ${user.empUn}` : null} </strong>
 
@@ -64,7 +64,7 @@ class NavbarComponent extends Component {
             <div>
                 <Navbar color="dark" dark expand="sm" className="mb-5">
                     <Container>
-                        <Link to={'/'}  className="nav-link"><NavbarBrand >Lexus Telecommunications</NavbarBrand></Link>
+                        <Link to={'/'}  className="nav-link"><NavbarBrand >CelTel Telecommunications</NavbarBrand></Link>
 
 
                             <Nav className="ml-auto" navbar>

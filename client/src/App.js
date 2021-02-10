@@ -34,14 +34,12 @@ class App extends Component {
                 <NavbarComponent/>
                 <div className="container">
 
-                  <br/>
-
                   <Switch>
                     <Route exact path='/' component={PackageList}/>
                     <Route exact path='/loginEmp' component={LoginEmp}/>
                     <Route exact path='/search' component={SearchPackageList}/>
                     <Route exact path='/registerEmp' component={RegisterEmp}/>
-                    <Route exact path='/addDoc' component={AddPackage}/>
+                    <Route exact path='/addPackage' component={AddPackage}/>
 
 
 

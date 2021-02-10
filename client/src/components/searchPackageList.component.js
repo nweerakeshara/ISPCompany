@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-
+import Package from "./package.component";
 import "react-notifications/lib/notifications.css";
-
+import styles from './css/searchPackageList.module.css';
 
 
 
@@ -23,6 +23,19 @@ class SearchPackageList extends Component {
         emp: PropTypes.object.isRequired,
     };
 
+    setType = (e) => {
+        this.setState({
+            query: e,
+            pager: {},
+            pageOfItems: []
+        });
+        console.log(this.state.query);
+        setTimeout(() => {
+            this.loadPage();
+        }, 2000)
+
+    }
+
     setSearch = (e) => {
         this.setState({
             query: e.target.value,
@@ -31,13 +44,12 @@ class SearchPackageList extends Component {
         });
     }
 
-    loadPage = (e) => {
+    loadPage = () => {
         // get page details and items from api
-        e.preventDefault();
         const params = new URLSearchParams(window.location.search);
         const page = parseInt(params.get("page")) || 1;
-        if (page !== this.state.pager.currentPage) {
-            fetch(`http://localhost:5000/api/doc/get/all/paginate/search?page=${page}&sitem=${this.state.query}`, {
+        if (page !== this.state.pager.currentPage && this.state.query != '') {
+            fetch(`http://localhost:5000/api/pac/get/all/paginate/search?page=${page}&sitem=${this.state.query}`, {
                 method: "GET",
             })
                 .then((response) => response.json())
@@ -51,7 +63,6 @@ class SearchPackageList extends Component {
     };
 
     render() {
-        const { user } = this.props.emp;
         const { pager, pageOfItems } = this.state;
         return (
             <div>
@@ -69,77 +80,33 @@ class SearchPackageList extends Component {
                     </div>
 
 
-
-                    <div className="form-group">
-
-                        <input type="submit" value="Search" className="btn btn-primary"/>
-
+                    <div className='col-sm-12 row p-0 m-0'>
+                        <div className='col-sm-6 p-0 m-0 justify-content-start'>
+                            <div className="form-group">
+                                <input type="submit" value="Search" className="btn btn-primary"/>
+                            </div>
+                        </div>
+                        <div className='col-sm-6 p-0 m-0 justify-content-end text-right row'>
+                            <p className={styles.typeOption} onClick={() => this.setType("4G")}>4G</p><h3> | </h3>
+                            <p className={styles.typeOption} onClick={() => this.setType("Fiber")}>Fiber</p><h3> | </h3>
+                            <p className={styles.typeOption} onClick={() => this.setType("Broadband")}>Broadband</p>
+                        </div>
                     </div>
+
                 </form>
                 <br/>
 
                 {/*--------------------------------------------------------------------------------------------------*/}
 
 
-                <div className="card text-center m-3">
-                    <h3 className="card-header font-weight-bold">Doctor List</h3>
+                <div className="card text-center mx-0">
+                    <h3 className="card-header font-weight-bold">Internet Package List</h3>
 
                     <div className="card-body ">
                         {pageOfItems.map((item) => (
-                            <div key={item._id}>
-                                <div className="container rounded-0 border border-info ">
-                                    <div className="container ">
-                                        <div className="row">
-                                            <div className="col-sm">
-                                                <br />
-                                                <img
-                                                    height="80%"
-                                                    width="100%"
-                                                    src={`/uploads/${item.imageData}`}
-                                                />
-                                                <br />
-                                            </div>
-                                            <div className="col-sm">
-                                                <br />
-                                                <br />
-                                                <br />
-                                                <h4 className="font-weight-bold text-center text-danger ">
-                                                    {item.docName}
-                                                </h4>
-                                                <h6 className="font-weight-bold text-center">
-                                                    Specialization : {item.specialization}
-                                                </h6>
-                                                <h5 className="font-weight-bold text-center text-info">
-                                                    Channeling Fee : Rs {item.channelFee}.00
-                                                </h5>
-                                                <br />
-                                                <br />
-                                            </div>
-
-                                            <div className="col-sm">
-                                                <br />
-                                                <br />
-                                                <br />
-                                                <h6 className="font-weight-bold text-center">
-                                                    Hospital : {item.hospital}
-                                                </h6>
-                                                <h6 className="font-weight-bold text-center text-primary">
-                                                    Channeling Days : {item.channelDays}
-                                                </h6>
-                                                <h6 className="font-weight-bold text-center text-success">
-                                                    Channeling Time : {item.time}
-                                                </h6>
-                                                <p className="font-weight-bold text-center text-warning">
-                                                    Doctor ID : {item.docUn}
-                                                </p>
-                                                <br />
-                                                <br />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <br />
-                            </div>
+                            <>
+                                <Package item={item}/>
+                            </>
                         ))}
                     </div>
                     <div className="card-footer pb-0 pt-3">

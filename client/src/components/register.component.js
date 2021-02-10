@@ -35,7 +35,7 @@ class RegisterEmp extends Component {
       msgtop: null,
     });
 
-    this.props.history.push("/addDoc");
+    this.props.history.push("/addPackage");
   };
 
   componentDidUpdate = (prevProps) => {
