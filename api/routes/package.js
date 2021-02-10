@@ -91,7 +91,7 @@ router.get('/get/all/paginate/search', (req,res) => {
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//to add docs to db
+//to add packages to db
 router.route("/add").post(
     upload.single("imageData"),
     (req, res, next) => {

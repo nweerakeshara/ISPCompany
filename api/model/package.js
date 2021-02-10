@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-
 const moment = require('moment');
-
 
 const packageSchema = mongoose.Schema({
 
@@ -51,10 +49,6 @@ const packageSchema = mongoose.Schema({
 },{
     collection : 'packages'
 });
-
-
-
-
 
 const Package = mongoose.model('Packages', packageSchema);
 module.exports = Package;
