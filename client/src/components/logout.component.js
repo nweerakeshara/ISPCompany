@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import { logout } from "../actions/empActions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -26,7 +25,7 @@ class LogoutEmp extends Component {
           className="btn btn-primary"
           onClick={this.onClick}
         >
-          Logout
+          <strong>Logout</strong>
         </button>
       </div>
     );

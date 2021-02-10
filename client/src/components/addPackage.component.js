@@ -153,7 +153,7 @@ class AddPackage extends Component{
             .then((data) => {
                 if (data.data.success) {
                     swal("Successful", "Package Details Added", "success");
-
+                    this.props.history.push('/')
                 }
             })
             .catch((err) => {
@@ -209,6 +209,7 @@ class AddPackage extends Component{
                         <div className="form-group">
                             <label>Package Serial Code :</label>
                             <input
+                                required
                                 type="text"
                                 className="form-control"
                                 value={this.state.serialCode}
@@ -220,6 +221,7 @@ class AddPackage extends Component{
                         <div className="form-group">
                             <label>Package Name :</label>
                             <input
+                                required
                                 type="text"
                                 className="form-control"
                                 value={this.state.packageName}
@@ -230,15 +232,16 @@ class AddPackage extends Component{
                         <div className="form-group">
                             <label>Package Type :</label>
                             <div onChange={this.onChangePackageType}>
-                                <input type="radio" value="4G" name="type" /> 4G <br/>
-                                <input type="radio" value="Fiber" name="type" /> Fiber <br/>
-                                <input type="radio" value="Broadband" name="type" /> Broadband
+                                <input type="radio" value="4G" name="type" required/> 4G <br/>
+                                <input type="radio" value="Fiber" name="type" required/> Fiber <br/>
+                                <input type="radio" value="Broadband" name="type" required/> Broadband
                             </div>
                         </div>
 
                         <div className="form-group">
                             <label>Monthly Rental (Rs) :</label>
                             <input
+                                required
                                 type="number"
                                 className="form-control"
                                 value={this.state.monthlyCharge}
@@ -250,6 +253,7 @@ class AddPackage extends Component{
                         <div className="form-group">
                             <label>Download Speed (Mbps) :</label>
                             <input
+                                required
                                 type="number"
                                 className="form-control"
                                 value={this.state.downloadSpeed}
@@ -261,6 +265,7 @@ class AddPackage extends Component{
                         <div className="form-group">
                             <label>Upload Speed (Mbps) :</label>
                             <input
+                                required
                                 type="number"
                                 className="form-control"
                                 value={this.state.uploadSpeed}
@@ -273,6 +278,7 @@ class AddPackage extends Component{
                         <div className="form-group">
                             <label>Download Limit (GB) :</label>
                             <input
+                                required
                                 type="number"
                                 className="form-control"
                                 value={this.state.downloadLimit}
@@ -284,6 +290,7 @@ class AddPackage extends Component{
                         <div className="form-group">
                             <label>Upload Limit (GB) :</label>
                             <input
+                                required
                                 type="number"
                                 className="form-control"
                                 value={this.state.uploadLimit}
@@ -297,6 +304,7 @@ class AddPackage extends Component{
                         <div className="form-group">
                             <label>Charge for an Extra GB (Rs) :</label>
                             <input
+                                required
                                 type="number"
                                 className="form-control"
                                 value={this.state.extraGBFee}
@@ -307,6 +315,7 @@ class AddPackage extends Component{
                         <div className="form-group">
                             <label>Down Payment (Rs) :</label>
                             <input
+                                required
                                 type="number"
                                 className="form-control"
                                 value={this.state.downPayment}
@@ -322,7 +331,7 @@ class AddPackage extends Component{
                                 <div className="image-container">
                                     <div className="process">
 
-                                        <input type="file" className="process__upload-btn" onChange={(e) => this.setImage(e, "multer")}/>
+                                        <input required type="file" className="process__upload-btn" onChange={(e) => this.setImage(e, "multer")}/>
                                         <img src={this.state.multerImage} alt="upload-image" className="process__image" />
                                     </div>
                                 </div>

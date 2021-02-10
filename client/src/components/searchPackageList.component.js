@@ -29,7 +29,6 @@ class SearchPackageList extends Component {
             pager: {},
             pageOfItems: []
         });
-        console.log(this.state.query);
         setTimeout(() => {
             this.loadPage();
         }, 2000)
