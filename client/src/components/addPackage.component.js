@@ -184,7 +184,7 @@ class AddPackage extends Component{
 
     render() {
 
-        const {isAuthenticated, user} =  this.props.emp;
+        const {isAuthenticated} =  this.props.emp;
 
         return(
             <div style={{marginTop: 10}}>

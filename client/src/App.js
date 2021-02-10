@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import disableBrowserBackButton from 'disable-browser-back-navigation';
 import {Provider} from 'react-redux';
 import store from './store';
 import {loadUser} from "./actions/empActions";
-
 import LoginEmp from "./components/login.component";
 import NavbarComponent from "./components/navbar.component";
 import PackageList from "./components/packageList.component";

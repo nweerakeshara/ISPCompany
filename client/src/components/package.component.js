@@ -15,6 +15,7 @@ class Package extends Component {
                             <div className="col-sm">
                                 <br />
                                 <img
+                                    alt="packageImg"
                                     height="80%"
                                     width="100%"
                                     src={`/uploads/${item.imageData}`}

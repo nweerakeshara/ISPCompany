@@ -1,10 +1,9 @@
 import React, {Component, Fragment} from 'react';
-import {Collapse, Nav, Navbar, NavbarToggler, NavbarBrand, NavItem, NavLink, Container} from 'reactstrap';
+import {Nav, Navbar, NavbarBrand, NavItem, Container} from 'reactstrap';
 import LogoutEmp from "./logout.component";
 import {Link} from "react-router-dom";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
 
 class NavbarComponent extends Component {
     state = {

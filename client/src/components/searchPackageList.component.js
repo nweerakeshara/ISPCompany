@@ -47,7 +47,7 @@ class SearchPackageList extends Component {
         // get page details and items from api
         const params = new URLSearchParams(window.location.search);
         const page = parseInt(params.get("page")) || 1;
-        if (page !== this.state.pager.currentPage && this.state.query != '') {
+        if (page !== this.state.pager.currentPage && this.state.query !== '') {
             fetch(`http://localhost:5000/api/pac/get/all/paginate/search?page=${page}&sitem=${this.state.query}`, {
                 method: "GET",
             })
